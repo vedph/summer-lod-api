@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SummerLod.Api", "SummerLod.Api\SummerLod.Api.csproj", "{79DCC2CC-ED29-4FF6-908E-1A83A47E50CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{71C524EA-6C9A-4807-B8FA-444CB1190B28}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79DCC2CC-ED29-4FF6-908E-1A83A47E50CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79DCC2CC-ED29-4FF6-908E-1A83A47E50CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79DCC2CC-ED29-4FF6-908E-1A83A47E50CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79DCC2CC-ED29-4FF6-908E-1A83A47E50CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEFE50AF-55B3-48AD-A8D2-667AC6B8DD50}
+	EndGlobalSection
+EndGlobal
