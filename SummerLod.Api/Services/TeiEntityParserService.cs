@@ -1,4 +1,5 @@
 ﻿using SummerLod.Api.Models;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace SummerLod.Api.Services;
@@ -7,13 +8,20 @@ public class TeiEntityParserService
 {
     public static readonly XNamespace TEI = "http://www.tei-c.org/ns/1.0";
 
+    private static string CollectSpacedConcatenatedValue(XElement element)
+    {
+        return Regex.Replace(
+            string.Join(" ", element.Descendants().Select(n => n.Value)),
+            @"\s+", " ").Trim();
+    }
+
     private static Entity ParsePerson(XElement person, bool org = false)
     {
         return new()
         {
             Type = org? "organization" : "person",
             Names = person.Elements(TEI + "persName")
-                .Select(n => n.Value).ToList(),
+                .Select(CollectSpacedConcatenatedValue).ToList(),
             Ids = person.Elements(TEI + "idno").Select(n => n.Value).ToList(),
             Links = person.Elements(TEI + "link")
                 .Select(n => n.Value).ToList(),
@@ -28,7 +36,7 @@ public class TeiEntityParserService
         {
             Type = "place",
             Names = place.Elements(TEI + "placeName")
-                .Select(n => n.Value).ToList(),
+                .Select(CollectSpacedConcatenatedValue).ToList(),
             Ids = place.Elements(TEI + "idno").Select(n => n.Value).ToList(),
             Links = place.Elements(TEI + "link")
                 .Select(n => n.Value).ToList(),

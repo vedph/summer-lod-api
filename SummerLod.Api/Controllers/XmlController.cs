@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SummerLod.Api.Models;
 using SummerLod.Api.Services;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace SummerLod.Api.Controllers;
 
@@ -58,6 +59,51 @@ public class XmlController : ControllerBase
             Debug.WriteLine(ex.ToString());
             _logger.LogError(ex, "Error parsing XML for entities");
             return new EntityListModel
+            {
+                Error = ex.Message
+            };
+        }
+    }
+
+    [HttpPost("xml/prettify")]
+    public XmlModel PrettifyXml([FromBody] XmlBindingModel model)
+    {
+        try
+        {
+            XDocument doc = XDocument.Parse(model.Xml);
+            return new XmlModel
+            {
+                Xml = doc.ToString(SaveOptions.OmitDuplicateNamespaces)
+            };
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.ToString());
+            _logger.LogError(ex, "Error prettifying XML");
+            return new XmlModel
+            {
+                Error = ex.Message
+            };
+        }
+    }
+
+    [HttpPost("xml/uglify")]
+    public XmlModel UglifyXml([FromBody] XmlBindingModel model)
+    {
+        try
+        {
+            XDocument doc = XDocument.Parse(model.Xml);
+            return new XmlModel
+            {
+                Xml = doc.ToString(SaveOptions.OmitDuplicateNamespaces |
+                    SaveOptions.DisableFormatting)
+            };
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.ToString());
+            _logger.LogError(ex, "Error prettifying XML");
+            return new XmlModel
             {
                 Error = ex.Message
             };
