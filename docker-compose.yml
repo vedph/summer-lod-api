@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  summer-lod-api:
+    image: vedph2020/summer-lod-api:0.0.1
+    container_name: summer-lod-api
+    ports:
+      - 5275:8080
+    networks:
+      - summer-lod-network
+    #environment:
+    # add allowed origins here, e.g. ALLOWEDORIGINS__0=http://localhost:4200
+
+networks:
+  summer-lod-network:
+    driver: bridge
