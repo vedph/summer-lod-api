@@ -1,6 +1,6 @@
 ﻿# Summer LOD API
 
-This API provides backend support for the Summer LOD app.
+This API provides backend support for the [Summer LOD app](https://github.com/vedph/summer-lod-app).
 
 ## Docker
 
