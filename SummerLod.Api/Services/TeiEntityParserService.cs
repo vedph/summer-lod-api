@@ -10,9 +10,13 @@ public class TeiEntityParserService
 
     private static string CollectSpacedConcatenatedValue(XElement element)
     {
-        return Regex.Replace(
-            string.Join(" ", element.Descendants().Select(n => n.Value)),
-            @"\s+", " ").Trim();
+        if (element.HasElements)
+        {
+            return Regex.Replace(
+                string.Join(" ", element.Descendants().Select(n => n.Value)),
+                @"\s+", " ").Trim();
+        }
+        return element.Value;
     }
 
     private static Entity ParsePerson(XElement person, bool org = false)
@@ -20,7 +24,7 @@ public class TeiEntityParserService
         return new()
         {
             Type = org? "organization" : "person",
-            Names = person.Elements(TEI + "persName")
+            Names = person.Elements(TEI + (org? "orgName" : "persName"))
                 .Select(CollectSpacedConcatenatedValue).ToList(),
             Ids = person.Elements(TEI + "idno").Select(n => n.Value).ToList(),
             Links = person.Elements(TEI + "link")

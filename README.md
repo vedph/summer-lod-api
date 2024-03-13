@@ -7,7 +7,7 @@ This API provides backend support for the [Summer LOD app](https://github.com/ve
 🐋 Quick Docker image build:
 
 ```ps1
-docker build . -t vedph2020/summer-lod-api:0.0.1 -t vedph2020/summer-lod-api:latest
+docker build . -t vedph2020/summer-lod-api:0.0.2 -t vedph2020/summer-lod-api:latest
 ```
 
 Replace with the current version.
@@ -15,7 +15,7 @@ Replace with the current version.
 Docker run (or use the [compose script](./docker-compose.yml)):
 
 ```ps1
-docker run -d --name summer-lod-api -p 5275:8080 vedph2020/summer-lod-api:0.0.1
+docker run -d --name summer-lod-api -p 5275:8080 vedph2020/summer-lod-api:0.0.2
 ```
 
 ## API
