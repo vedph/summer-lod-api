@@ -54,6 +54,10 @@ public static class Program
         // CORS
         ConfigureCorsServices(services, config);
 
+        // proxy
+        services.AddHttpClient();
+        services.AddResponseCaching();
+
         // Serilog
         services.AddSingleton(sp =>
         {
@@ -89,7 +93,7 @@ public static class Program
                 writeToProviders: true);
     }
 
-    public static async Task Main(string[] args)
+    public static void Main(string[] args)
     {
         DumpEnvironmentVars();
 
@@ -104,6 +108,9 @@ public static class Program
 
         // CORS
         app.UseCors("CorsPolicy");
+
+        // response caching
+        app.UseResponseCaching();
 
         // HTTP request pipeline
         app.UseSwagger();
