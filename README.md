@@ -118,3 +118,7 @@ On return, `error` is set instead of entities in case of errors. Entities have a
     "error": "error message"
 }
 ```
+
+## History
+
+- 2024-05-24: updated packages.
