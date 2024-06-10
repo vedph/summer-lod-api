@@ -7,7 +7,7 @@ This API provides backend support for the [Summer LOD app](https://github.com/ve
 🐋 Quick Docker image build:
 
 ```ps1
-docker build . -t vedph2020/summer-lod-api:0.0.2 -t vedph2020/summer-lod-api:latest
+docker build . -t vedph2020/summer-lod-api:0.0.3 -t vedph2020/summer-lod-api:latest
 ```
 
 Replace with the current version.
@@ -121,4 +121,5 @@ On return, `error` is set instead of entities in case of errors. Entities have a
 
 ## History
 
+- 2024-06-10: minor changes.
 - 2024-05-24: updated packages.

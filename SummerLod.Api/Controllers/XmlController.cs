@@ -8,20 +8,20 @@ using System.Xml.Linq;
 namespace SummerLod.Api.Controllers;
 
 [ApiController]
+[Route("xml")]
 [Produces("application/json")]
-public class XmlController : ControllerBase
+public sealed class XmlController(ILogger<XmlController> logger,
+    TeiEntityParserService entityParser) : ControllerBase
 {
-    private readonly ILogger<XmlController> _logger;
-    private readonly TeiEntityParserService _entityParser;
+    private readonly ILogger<XmlController> _logger = logger;
+    private readonly TeiEntityParserService _entityParser = entityParser;
 
-    public XmlController(ILogger<XmlController> logger,
-        TeiEntityParserService entityParser)
-    {
-        _logger = logger;
-        _entityParser = entityParser;
-    }
-
-    [HttpPost("xml/rendition")]
+    /// <summary>
+    /// Renders the specified XML using the received XSLT code.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <returns>Rendition output, with result or error.</returns>
+    [HttpPost("rendition")]
     public XmlRenditionModel Render([FromBody] XmlRenditionBindingModel model)
     {
         try
@@ -44,8 +44,13 @@ public class XmlController : ControllerBase
         }
     }
 
-    [HttpPost("xml/entities")]
-    public EntityListModel EntityListModel([FromBody] XmlBindingModel model)
+    /// <summary>
+    /// Parses entities from the received XML.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <returns>Entities with result or error.</returns>
+    [HttpPost("entities")]
+    public EntityListModel ParseEntities([FromBody] XmlBindingModel model)
     {
         try
         {
@@ -65,7 +70,12 @@ public class XmlController : ControllerBase
         }
     }
 
-    [HttpPost("xml/prettify")]
+    /// <summary>
+    /// Prettifies the received XML.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <returns>Prettified XML or error.</returns>
+    [HttpPost("prettify")]
     public XmlModel PrettifyXml([FromBody] XmlBindingModel model)
     {
         try
@@ -87,7 +97,12 @@ public class XmlController : ControllerBase
         }
     }
 
-    [HttpPost("xml/uglify")]
+    /// <summary>
+    /// Uglifies the received XML.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <returns>Uglified XML or error.</returns>
+    [HttpPost("uglify")]
     public XmlModel UglifyXml([FromBody] XmlBindingModel model)
     {
         try
