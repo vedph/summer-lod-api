@@ -1,4 +1,5 @@
 ﻿using SummerLod.Api.Models;
+using System;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
@@ -28,8 +29,10 @@ public class TeiEntityParserService
                 .Select(CollectSpacedConcatenatedValue).ToList(),
             Ids = person.Elements(TEI + "idno").Select(n => n.Value).ToList(),
             Links = person.Elements(TEI + "link")
-                .Select(n => n.Value).ToList(),
-            Description = person.Elements(TEI + "link")
+                .Where(n => n.Attribute("target") != null)
+                .Select(n => n.Attribute("target")!.Value)
+                .ToList(),
+            Description = person.Elements(TEI + "note")
                 .Select(n => n.Value).FirstOrDefault()
         };
     }
@@ -43,8 +46,10 @@ public class TeiEntityParserService
                 .Select(CollectSpacedConcatenatedValue).ToList(),
             Ids = place.Elements(TEI + "idno").Select(n => n.Value).ToList(),
             Links = place.Elements(TEI + "link")
-                .Select(n => n.Value).ToList(),
-            Description = place.Elements(TEI + "link")
+                .Where(n => n.Attribute("target") != null)
+                .Select(n => n.Attribute("target")!.Value)
+                .ToList(),
+            Description = place.Elements(TEI + "note")
                 .Select(n => n.Value).FirstOrDefault()
         };
     }
