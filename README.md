@@ -121,6 +121,7 @@ On return, `error` is set instead of entities in case of errors. Entities have a
 
 ## History
 
+- 2024-09-14: updated packages.
 - 2024-06-25: updated packages.
 
 ### 0.0.3
