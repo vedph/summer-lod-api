@@ -17,7 +17,7 @@ docker buildx build . --platform linux/amd64,linux/arm64,windows/amd64 -t vedph2
 Docker run (or use the [compose script](./docker-compose.yml)):
 
 ```ps1
-docker run -d --name summer-lod-api -p 5275:8080 vedph2020/summer-lod-api:0.0.4
+docker run -d --name summer-lod-api -p 5275:8080 vedph2020/summer-lod-api:1.0.0
 ```
 
 ## API
@@ -122,6 +122,8 @@ On return, `error` is set instead of entities in case of errors. Entities have a
 ```
 
 ## History
+
+### 1.0.0
 
 - 2026-02-13:
   - updated .NET and packages.
