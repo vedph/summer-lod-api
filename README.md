@@ -9,7 +9,7 @@ This API provides backend support for the [Summer LOD app](https://github.com/ve
 ```sh
 docker buildx create --use
 
-docker buildx build . --platform linux/amd64,linux/arm64,windows/amd64 -t vedph2020/summer-lod-api:1.0.0 -t vedph2020/summer-lod-api:latest --push
+docker buildx build . --platform linux/amd64,linux/arm64,windows/amd64 -t vedph2020/summer-lod-api:1.0.1 -t vedph2020/summer-lod-api:latest --push
 ```
 
 (replace with the current version).
@@ -122,6 +122,10 @@ On return, `error` is set instead of entities in case of errors. Entities have a
 ```
 
 ## History
+
+### 1.0.1
+
+- 2026-03-31: updated packages.
 
 ### 1.0.0
 
